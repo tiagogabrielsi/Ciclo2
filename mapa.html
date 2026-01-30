@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interativo</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/map.css">
+
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h1>UFES</h1>
+            <p>Oi, Sofia!</p>
+        </div>
+
+        <nav class="accordion-menu">
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-aulas">
+                    <i class="fas fa-graduation-cap"></i> Minhas Aulas
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="academico.html" class="sub-item">Acompanhamento</a>
+                    <a href="curso.html" class="sub-item">Meu Curso</a>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-matricula">
+                    <i class="fas fa-calendar-check"></i> Matrícula
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="matricula.html" class="sub-item">Ofertas de Disciplinas</a>
+                    <a href="estagio.html" class="sub-item">Vagas de Estágio</a>
+                </div>
+            </div>
+
+            <a href="documentos.html" class="nav-item">
+                <i class="fas fa-file-alt"></i> Documentos
+            </a>
+
+            <a href="agenda.html" class="nav-item">
+                <i class="fas fa-university"></i> Secretaria
+            </a>
+
+            
+
+            <a href="mapa.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i> Mapa Interativo
+            </a>
+
+            <a href="cardapio.html" class="nav-item">
+                <i class="fas fa-utensils"></i> Restaurante Universitário
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-header">
+            <i class="fas fa-language icon-btn" title="Traduzir / Translate"></i>
+            <i class="fas fa-sign-out-alt icon-btn" title="Sair"></i>
+        </header>
+
+        <h2 class="section-title">Mapa Interativo do Campus</h2>
+        <section>
+            <div class="map-container">
+        
+                <svg class="paths-svg">
+                    <path d="M400,250 C400,350 150,300 150,400" stroke="#444" stroke-width="4" fill="none" stroke-dasharray="10,5" />
+                    <path d="M400,200 C500,200 650,250 650,180" stroke="#444" stroke-width="4" fill="none" stroke-dasharray="10,5" />
+                    <path d="M400,250 L450,360" stroke="#2ecc71" stroke-width="2" fill="none" />
+                </svg>
+
+                <div class="map-node" id="pc-node" onclick="openBuilding('pc')">
+                    <div class="wifi-indicator wifi-good"><i class="fa-solid fa-wifi"></i></div>
+                    <div class="building-box">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div class="label">Prédio Central</div>
+                </div>
+
+                <div class="map-node" id="bib-node" onclick="openBuilding('bib')">
+                    <div class="wifi-indicator wifi-good"><i class="fa-solid fa-wifi"></i></div>
+                    <div class="building-box">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <div class="label">Biblioteca</div>
+                </div>
+
+                <div class="map-node" id="sec-node" onclick="openBuilding('sec')">
+                    <div class="wifi-indicator wifi-bad"><i class="fa-solid fa-x"></i></div>
+                    <div class="building-box">
+                        <i class="fa-solid fa-passport"></i>
+                    </div>
+                    <div class="label">Sec. Rel. Int.</div>
+                </div>
+
+                <div class="bus-stop" onclick="openBusStop()">
+                    <i class="fa-solid fa-bus"></i>
+                </div>
+
+            </div>
+
+            <div class="modal-overlay" id="infoModal" onclick="closeModal(event)">
+                <div class="modal-content" onclick="event.stopPropagation()"> <div class="modal-header">
+                        <h2 id="modalTitle">Título</h2>
+                        <button class="close-btn" onclick="forceCloseModal()"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div id="modalBody">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+  
+
+    </main>
+
+    <script>
+        const buildingData = {
+            'pc': {
+                title: 'Prédio Central (PC)',
+                rooms: [
+                    { name: 'Reitoria', icon: 'fa-user-tie' },
+                    { name: 'Sala dos Professores', icon: 'fa-mug-hot' },
+                    { name: 'Auditório Magno', icon: 'fa-microphone' },
+                    { name: 'Laboratório de Informática', icon: 'fa-computer' }
+                ]
+            },
+            'bib': {
+                title: 'Biblioteca (Bib)',
+                rooms: [
+                    { name: 'Acervo Geral', icon: 'fa-book-open' },
+                    { name: 'Sala de Estudos Silenciosa', icon: 'fa-volume-xmark' },
+                    { name: 'Balcão de Empréstimos', icon: 'fa-id-card' },
+                    { name: 'Café Literário', icon: 'fa-coffee' }
+                ]
+            },
+            'sec': {
+                title: 'Secretaria de Rel. Internacionais',
+                rooms: [
+                    { name: 'Coordenação de Intercâmbio', icon: 'fa-plane' },
+                    { name: 'Atendimento ao Aluno', icon: 'fa-users' },
+                    { name: 'Arquivo Morto', icon: 'fa-box-archive' },
+                    { name: 'Sala de Reuniões', icon: 'fa-handshake' }
+                ]
+            }
+        };
+
+        // DADOS DO ÔNIBUS
+        const busSchedule = [
+            { id: 'BUS-101', line: 'Circular Campus', time: '08:45', passed: true },
+            { id: 'BUS-204', line: 'Centro - Expresso', time: '09:00', passed: true },
+            { id: 'BUS-101', line: 'Circular Campus', time: '09:30', passed: false },
+            { id: 'BUS-305', line: 'Terminal Norte', time: '09:45', passed: false },
+            { id: 'BUS-204', line: 'Centro - Expresso', time: '10:00', passed: false }
+        ];
+
+        const modal = document.getElementById('infoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        function openBuilding(id) {
+            const data = buildingData[id];
+            modalTitle.innerText = data.title;
+            
+            let html = '<div class="floor-plan-grid">';
+            data.rooms.forEach(room => {
+                html += `
+                    <div class="room">
+                        <i class="fa-solid ${room.icon}"></i>
+                        <span>${room.name}</span>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
+            modalBody.innerHTML = html;
+            modal.style.display = 'flex';
+        }
+
+        function openBusStop() {
+            modalTitle.innerText = 'Horários do Ônibus';
+            
+            let html = `
+                <table class="bus-table">
+                    <thead>
+                        <tr>
+                            <th>Ônibus</th>
+                            <th>Linha</th>
+                            <th>Horário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            busSchedule.forEach(bus => {
+                const statusClass = bus.passed ? 'status-passed' : 'status-coming';
+                const icon = bus.passed ? '<i class="fa-solid fa-clock-rotate-left"></i>' : '<i class="fa-solid fa-clock"></i>';
+                html += `
+                    <tr class="${statusClass}">
+                        <td>${bus.id}</td>
+                        <td>${bus.line}</td>
+                        <td>${icon} ${bus.time}</td>
+                    </tr>
+                `;
+            });
+
+            html += '</tbody></table>';
+            
+            modalBody.innerHTML = html;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function forceCloseModal() {
+            modal.style.display = 'none';
+        }
+    </script>
+
+    <script src="main.js"></script>
+
+</body>
+</html>

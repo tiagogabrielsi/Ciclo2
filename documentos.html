@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFES - Documentos (Sofia)</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/documento.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h1>UFES</h1>
+            <p>Oi, Sofia!</p>
+        </div>
+
+        <nav class="accordion-menu">
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-aulas">
+                    <i class="fas fa-graduation-cap"></i> Minhas Aulas
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="academico.html" class="sub-item">Acompanhamento</a>
+                    <a href="curso.html" class="sub-item">Meu Curso</a>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-matricula">
+                    <i class="fas fa-calendar-check"></i> Matrícula
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="matricula.html" class="sub-item">Ofertas de Disciplinas</a>
+                    <a href="estagio.html" class="sub-item">Vagas de Estágio</a>
+                </div>
+            </div>
+
+            <a href="documentos.html" class="nav-item">
+                <i class="fas fa-file-alt"></i> Documentos
+            </a>
+
+            <a href="agenda.html" class="nav-item">
+                <i class="fas fa-university"></i> Secretaria
+            </a>
+
+            
+
+            <a href="mapa.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i> Mapa Interativo
+            </a>
+
+            <a href="cardapio.html" class="nav-item">
+                <i class="fas fa-utensils"></i> Restaurante Universitário
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-header">
+            <i class="fas fa-language icon-btn" title="Traduzir"></i>
+            <i class="fas fa-sign-out-alt icon-btn" title="Sair"></i>
+        </header>
+
+        <div class="documents-container">
+            
+            <div class="docs-header-bar">
+                <h2 class="page-title">Meus Documentos</h2>
+                
+                <div class="docs-filters">
+                    <select class="filter-dropdown">
+                        <option>2026</option>
+                        <option>2025</option>
+                    </select>
+                    
+                    <select class="filter-dropdown">
+                        <option>1º Período</option>
+                        <option>2º Período</option>
+                    </select>
+
+                    <button class="btn-refresh">
+                        <i class="fas fa-sync-alt"></i> Período Atual
+                    </button>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Relatórios</h3>
+            
+            <div class="docs-grid">
+                
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Atestado de Cotista</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta"><i class="fas fa-infinity"></i></span>
+                        <i class="fas fa-cloud-download-alt download-icon" title="Baixar PDF"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Atestado de Reconhecimento</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta">2026</span>
+                        <i class="fas fa-cloud-download-alt download-icon" title="Baixar PDF"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Ficha Cadastral</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta"><i class="fas fa-infinity"></i></span>
+                        <i class="fas fa-cloud-download-alt download-icon" title="Baixar PDF"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Atestado de Reconhecimento</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta">2026</span>
+                        <i class="fas fa-cloud-download-alt download-icon" title="Baixar PDF"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Ficha Cadastral</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta"><i class="fas fa-infinity"></i></span>
+                        <i class="fas fa-cloud-download-alt download-icon" title="Baixar PDF"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Histórico Parcial</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta"><i class="fas fa-infinity"></i></span>
+                        <i class="fas fa-cloud-download-alt download-icon" title="Baixar PDF"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-id-card doc-icon-type"></i> <span class="doc-name">Identidade Ufes</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta"><i class="fas fa-infinity"></i></span>
+                        <i class="fas fa-cloud-download-alt download-icon" title="Baixar PDF"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Comprovante de Solicitação de Matrícula</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta">2026</span>
+                        <i class="fas fa-cloud-download-alt download-icon" title="Baixar PDF"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+  <script src="main.js"></script>
+
+</body>
+</html>
+  

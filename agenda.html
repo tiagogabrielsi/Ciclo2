@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFES - Agenda de Suporte</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/agenda.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h1>UFES</h1>
+            <p>Oi, Sofia!</p>
+        </div>
+
+        <nav class="accordion-menu">
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-aulas">
+                    <i class="fas fa-graduation-cap"></i> Minhas Aulas
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="academico.html" class="sub-item">Acompanhamento</a>
+                    <a href="curso.html" class="sub-item">Meu Curso</a>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-matricula">
+                    <i class="fas fa-calendar-check"></i> Matrícula
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="matricula.html" class="sub-item">Ofertas de Disciplinas</a>
+                    <a href="estagio.html" class="sub-item">Vagas de Estágio</a>
+                </div>
+            </div>
+
+            <a href="documentos.html" class="nav-item">
+                <i class="fas fa-file-alt"></i> Documentos
+            </a>
+
+            <a href="agenda.html" class="nav-item">
+                <i class="fas fa-university"></i> Secretaria
+            </a>
+
+            
+
+            <a href="mapa.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i> Mapa Interativo
+            </a>
+
+            <a href="cardapio.html" class="nav-item">
+                <i class="fas fa-utensils"></i> Restaurante Universitário
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <i class="fas fa-language icon-btn" title="Traduzir"></i>
+            <i class="fas fa-sign-out-alt icon-btn" title="Sair"></i>
+        </header>
+
+        <div class="agenda-container">
+            <div class="docs-header-bar">
+                <h2 class="page-title">Agendamentos com Profissionais</h2>
+                <button class="btn btn-confirm" onclick="openBookingModal()">
+                    <i class="fas fa-plus"></i> Novo Agendamento
+                </button>
+            </div>
+
+            <div class="agenda-layout">
+                <div class="appointments-list" id="appointmentsList">
+                    <div class="appointment-card today">
+                        <div class="appt-time">
+                            <span class="appt-hour">14:00</span>
+                            <span class="appt-date">HOJE</span>
+                        </div>
+                        <div class="appt-avatar"><i class="fas fa-user-tie"></i></div>
+                        <div class="appt-details">
+                            <h4 class="appt-person">Prof. Carlos Mendes</h4>
+                            <p class="appt-role">Coordenador de Intercâmbio</p>
+                            <div class="appt-tags">
+                                <span class="tag tag-online"><i class="fas fa-video"></i> Google Meet</span>
+                            </div>
+                        </div>
+                        <div class="appt-action">
+                            <button class="btn btn-video">ENTRAR</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini-calendar-panel">
+                    <h3 class="panel-title">Janeiro 2026</h3>
+                    <div class="calendar-grid small-grid">
+                        <div class="day-header">D</div><div class="day-header">S</div>
+                        <div class="day-header">T</div><div class="day-header">Q</div>
+                        <div class="day-header">Q</div><div class="day-header">S</div>
+                        <div class="day-header">S</div>
+                        <div class="grid-cell inactive">28</div><div class="grid-cell inactive">29</div>
+                        <div class="grid-cell inactive">30</div><div class="grid-cell inactive">31</div>
+                        <div class="grid-cell">1</div><div class="grid-cell">2</div><div class="grid-cell">3</div>
+                        <div class="grid-cell">4</div><div class="grid-cell">5</div><div class="grid-cell">6</div>
+                        <div class="grid-cell">7</div><div class="grid-cell">8</div><div class="grid-cell">9</div>
+                        <div class="grid-cell">10</div>
+                        <div class="grid-cell">11</div><div class="grid-cell">12</div><div class="grid-cell">13</div>
+                        <div class="grid-cell">14</div><div class="grid-cell">15</div><div class="grid-cell">16</div>
+                        <div class="grid-cell">17</div>
+                        <div class="grid-cell">18</div><div class="grid-cell">19</div><div class="grid-cell">20</div>
+                        <div class="grid-cell">21</div><div class="grid-cell">22</div><div class="grid-cell">23</div>
+                        <div class="grid-cell">24</div>
+                        <div class="grid-cell">25</div><div class="grid-cell current-day">26</div>
+                        <div class="grid-cell has-event">27</div><div class="grid-cell">28</div>
+                        <div class="grid-cell">29</div><div class="grid-cell has-event">30</div>
+                        <div class="grid-cell">31</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Novo Agendamento</h3>
+                <button class="close-modal" onclick="closeBookingModal()"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Profissional / Setor</label>
+                        <select id="profSelect" class="form-select" required>
+                            <option value="Coordenador de Intercâmbio">Coordenador de Intercâmbio</option>
+                            <option value="Secretaria Acadêmica">Secretaria Acadêmica</option>
+                            <option value="Orientação de Estágio">Orientação de Estágio</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Selecione o Dia</label>
+                        <div class="calendar-picker">
+                            <div class="calendar-picker-header">
+                                <button type="button" onclick="changeMonth(-1)">&lt;</button>
+                                <span id="currentMonthDisplay">Janeiro 2026</span>
+                                <button type="button" onclick="changeMonth(1)">&gt;</button>
+                            </div>
+                            <div class="calendar-picker-grid" id="calendarGrid">
+                                </div>
+                        </div>
+                        <input type="hidden" id="selectedDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Hora (Formato Militar: 00:00 - 23:59)</label>
+                        <input type="text" id="militaryTimeInput" class="form-input" 
+                            placeholder="Ex: 14:30" pattern="^([01]\d|2[0-3]):([0-5]\d)$" 
+                            maxlength="5" required>
+                        <small style="color: #888; display: block; margin-top: 5px;">Use o formato 24h.</small>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Confirmar Agendamento</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        function selectQuickDate(element, dateValue) {
+            document.querySelectorAll('.date-option').forEach(opt => opt.classList.remove('selected'));
+            
+            element.classList.add('selected');
+            
+            document.getElementById('selectedDate').value = dateValue;
+        }
+
+        function openBookingModal() {
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const prof = document.getElementById('profSelect').value;
+            const date = document.getElementById('selectedDate').value;
+            const time = document.getElementById('timeSelect').value;
+
+            if (!date) {
+                alert("Por favor, selecione uma data.");
+                return;
+            }
+            const newListEntry = `
+                <div class="appointment-card">
+                    <div class="appt-time">
+                        <span class="appt-hour">${hour}</span>
+                        <span class="appt-date">${dateStr}</span>
+                    </div>
+                    <div class="appt-avatar"><i class="fas fa-university"></i></div>
+                    <div class="appt-details">
+                        <h4 class="appt-person">${prof}</h4>
+                        <p class="appt-role">Agendamento Solicitado</p>
+                        <div class="appt-tags">
+                            <span class="tag tag-presencial"><i class="fas fa-building"></i> Prédio Administrativo</span>
+                        </div>
+                    </div>
+                    <div class="appt-action">
+                        <button class="btn btn-outline">Detalhes</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('appointmentsList').innerHTML += newListEntry;
+            closeBookingModal();
+            event.target.reset();
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingModal');
+            if (event.target == modal) closeBookingModal();
+        }
+
+
+        let currentViewDate = new Date(2026, 0, 1);
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            const display = document.getElementById('currentMonthDisplay');
+            grid.innerHTML = '';
+
+            const days = ["D", "S", "T", "Q", "Q", "S", "S"];
+            const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
+                            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+            display.innerText = `${months[currentViewDate.getMonth()]} ${currentViewDate.getFullYear()}`;
+
+            // Cabeçalhos
+            days.forEach(d => {
+                const el = document.createElement('div');
+                el.className = 'cal-weekday';
+                el.innerText = d;
+                grid.appendChild(el);
+            });
+
+            const firstDay = new Date(currentViewDate.getFullYear(), currentViewDate.getMonth(), 1).getDay();
+            const lastDay = new Date(currentViewDate.getFullYear(), currentViewDate.getMonth() + 1, 0).getDate();
+
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'cal-day empty';
+                grid.appendChild(empty);
+            }
+
+            for (let d = 1; d <= lastDay; d++) {
+                const cell = document.createElement('div');
+                cell.className = 'cal-day';
+                cell.innerText = d;
+                cell.onclick = () => {
+                    document.querySelectorAll('.cal-day').forEach(c => c.classList.remove('selected'));
+                    cell.classList.add('selected');
+                    document.getElementById('selectedDate').value = `${currentViewDate.getFullYear()}-${currentViewDate.getMonth()+1}-${d}`;
+                };
+                grid.appendChild(cell);
+            }
+        }
+
+        document.getElementById('militaryTimeInput').addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length >= 3) {
+                e.target.value = v.substring(0, 2) + ":" + v.substring(2, 4);
+            }
+        });
+
+        function changeMonth(step) {
+            currentViewDate.setMonth(currentViewDate.getMonth() + step);
+            renderCalendar();
+        }
+
+        document.addEventListener('DOMContentLoaded', renderCalendar);
+
+        
+    </script>
+</body>
+</html>

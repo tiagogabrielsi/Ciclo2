@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhamento Acadêmico</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/documento.css">
+    <script src="main.js"></script>
+
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h1>UFES</h1>
+            <p>Oi, Sofia!</p>
+        </div>
+
+        <nav class="accordion-menu">
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-aulas">
+                    <i class="fas fa-graduation-cap"></i> Minhas Aulas
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="academico.html" class="sub-item">Acompanhamento</a>
+                    <a href="curso.html" class="sub-item">Meu Curso</a>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-matricula">
+                    <i class="fas fa-calendar-check"></i> Matrícula
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="matricula.html" class="sub-item">Ofertas de Disciplinas</a>
+                    <a href="estagio.html" class="sub-item">Vagas de Estágio</a>
+                </div>
+            </div>
+
+            <a href="documentos.html" class="nav-item">
+                <i class="fas fa-file-alt"></i> Documentos
+            </a>
+
+            <a href="agenda.html" class="nav-item">
+                <i class="fas fa-university"></i> Secretaria
+            </a>
+
+            <a href="mapa.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i> Mapa Interativo
+            </a>
+
+            <a href="cardapio.html" class="nav-item">
+                <i class="fas fa-utensils"></i> Restaurante Universitário
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-header">
+            <i class="fas fa-language icon-btn" title="Traduzir"></i>
+            <i class="fas fa-sign-out-alt icon-btn" title="Sair"></i>
+        </header>
+
+        <div class="documents-container">
+            
+            <div class="docs-header-bar">
+                <h2 class="page-title">Disciplinas</h2>
+                
+                <div class="docs-filters">
+                    <select class="filter-dropdown">
+                        <option>2026/1</option>
+                        <option>2025/2</option>
+                    </select>
+                    
+                    <button class="btn-refresh">
+                        <i class="fas fa-sync-alt"></i> Atualizar
+                    </button>
+                </div>
+            </div>
+            
+            <div class="docs-grid">
+                
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Estudos Literários</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <i class="fa-solid fa-ranking-star" title="Notas" onclick="openGrades('Estudos Literários', [8.5, 9.0, 7.5])"></i>
+                        <i class="fa-solid fa-list-check" title="Presenças" onclick="openAttendance('Estudos Literários', 2, ['12/03 - Atraso', '15/04 - Doença'])"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Latim I</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <i class="fa-solid fa-ranking-star" title="Notas" onclick="openGrades('Latim I', [6.0, 5.5, 8.0])"></i>
+                        <i class="fa-solid fa-list-check" title="Presenças" onclick="openAttendance('Latim I', 5, ['10/02 - Sem justif.', '12/02 - Sem justif.', '20/03 - Atraso', '01/04 - Viagem', '05/05 - Sem justif.'])"></i>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="far fa-file-alt doc-icon-type"></i>
+                        <span class="doc-name">Filosofia</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <i class="fa-solid fa-ranking-star" title="Notas" onclick="openGrades('Filosofia', [10.0, 9.5, 10.0])"></i>
+                        <i class="fa-solid fa-list-check" title="Presenças" onclick="openAttendance('Filosofia', 0, [])"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="academicModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Título</h3>
+                <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="modal-body" id="modalBody">
+                </div>
+        </div>
+    </div>
+  
+    <script src="main.js"></script>
+
+    <script>
+        let myChart = null; // Variável global para destruir o gráfico anterior
+
+        function openGrades(subject, grades) {
+            const modal = document.getElementById('academicModal');
+            document.getElementById('modalTitle').innerText = 'Notas: ' + subject;
+            
+            const html = `
+                <div class="chart-wrapper">
+                    <canvas id="gradesChart"></canvas>
+                </div>
+                <div style="margin-top:20px; text-align:center;">
+                    <p>Média Parcial: <strong>${((grades.reduce((a,b)=>a+b,0))/grades.length).toFixed(1)}</strong></p>
+                </div>
+            `;
+            document.getElementById('modalBody').innerHTML = html;
+            modal.style.display = 'flex';
+
+            const ctx = document.getElementById('gradesChart').getContext('2d');
+            
+            if (myChart) myChart.destroy();
+
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Avaliação 1', 'Avaliação 2', 'Avaliação 3'],
+                    datasets: [{
+                        label: 'Pontuação',
+                        data: grades,
+                        backgroundColor: [
+                            'rgba(52, 152, 219, 0.7)', // Azul
+                            'rgba(155, 89, 182, 0.7)', // Roxo
+                            'rgba(46, 204, 113, 0.7)'  // Verde
+                        ],
+                        borderColor: [
+                            'rgba(52, 152, 219, 1)',
+                            'rgba(155, 89, 182, 1)',
+                            'rgba(46, 204, 113, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10,
+                            ticks: { color: '#aaa' },
+                            grid: { color: '#333' }
+                        },
+                        x: {
+                            ticks: { color: '#aaa' },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false } // Esconde a legenda padrão
+                    }
+                }
+            });
+        }
+
+        function openAttendance(subject, absences, reasons) {
+            const modal = document.getElementById('academicModal');
+            document.getElementById('modalTitle').innerText = 'Frequência: ' + subject;
+
+            const maxCharges = 7;
+            const remainingCharges = Math.max(0, maxCharges - absences);
+            let batteryHTML = '';
+
+            let batteryClass = '';
+            if (remainingCharges <= 2) batteryClass = 'battery-critical';
+            else if (remainingCharges <= 4) batteryClass = 'battery-warning';
+
+            for (let i = 0; i < maxCharges; i++) {
+                if (i < remainingCharges) {
+                    batteryHTML += '<div class="battery-charge"></div>';
+                } else {
+                    batteryHTML += '<div class="battery-charge charge-lost"></div>';
+                }
+            }
+
+            let rows = '';
+            if (reasons.length > 0) {
+                reasons.forEach(r => {
+                    rows += `<tr><td>${r}</td></tr>`;
+                });
+            } else {
+                rows = '<tr><td style="text-align:center; color:#888;">Nenhuma falta registrada! ✨</td></tr>';
+            }
+
+            const html = `
+                <div class="battery-container ${batteryClass}">
+                    <div class="battery-visual">
+                        ${batteryHTML}
+                    </div>
+                    <div class="battery-info">
+                        <span class="battery-value">${absences} Faltas</span>
+                        <span class="battery-text">Limite: ${maxCharges}</span>
+                    </div>
+                </div>
+
+                <h4 style="color:#b2bec3; margin-bottom:10px;">Histórico de Ausências</h4>
+                <table class="attendance-table">
+                    <thead>
+                        <tr><th>Data / Motivo</th></tr>
+                    </thead>
+                    <tbody>
+                        ${rows}
+                    </tbody>
+                </table>
+            `;
+
+            document.getElementById('modalBody').innerHTML = html;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('academicModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('academicModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>

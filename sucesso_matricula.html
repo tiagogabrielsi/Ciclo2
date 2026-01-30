@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFES - Portal do Aluno (Sofia)</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <canvas id="vanillaConfettiCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h1>UFES</h1>
+            <p>Oi, Sofia!</p>
+        </div>
+
+        <nav class="accordion-menu">
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-aulas">
+                    <i class="fas fa-graduation-cap"></i> Minhas Aulas
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="academico.html" class="sub-item">Acompanhamento</a>
+                    <a href="curso.html" class="sub-item">Meu Curso</a>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-matricula">
+                    <i class="fas fa-calendar-check"></i> Matrícula
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="matricula.html" class="sub-item">Ofertas de Disciplinas</a>
+                    <a href="estagio.html" class="sub-item">Vagas de Estágio</a>
+                </div>
+            </div>
+
+            <a href="documentos.html" class="nav-item">
+                <i class="fas fa-file-alt"></i> Documentos
+            </a>
+
+            <a href="agenda.html" class="nav-item">
+                <i class="fas fa-university"></i> Secretaria
+            </a>
+
+            
+
+            <a href="mapa.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i> Mapa Interativo
+            </a>
+
+            <a href="cardapio.html" class="nav-item">
+                <i class="fas fa-utensils"></i> Restaurante Universitário
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content" style="display: flex; flex-direction: column;">
+            
+            <header class="top-header">
+                <i class="fas fa-language icon-btn" title="Traduzir / Translate"></i>
+                <i class="fas fa-sign-out-alt icon-btn" title="Sair"></i>
+            </header>
+
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <section>
+                    <h2 class="section-title" style="margin-bottom: 20px;">SUCESSO!</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                        <path fill="#4caf50" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
+                        <path fill="#ccff90" d="M34.602,14.602L21,28.199l-5.602-5.598l-2.797,2.797L21,33.801l16.398-16.402L34.602,14.602z"></path>
+                    </svg>
+                </section>
+
+                <p style="margin-top: 20px; color: #b2bec3; font-size: 1.1em; max-width: 600px;">
+                    Matrícula concluída com sucesso!<br>
+                    Pode fechar a janela ou voltar a página inicial.
+                </p>
+            </div>
+
+    </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const btnDashboard = document.getElementById('btn-dashboard');
+        const btnMatricula = document.getElementById('btn-matricula');
+        const btnDocumentos = document.getElementById('btn-documentos');
+
+        if (btnDashboard) {
+            btnDashboard.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'dashboard.html';
+            });
+        }
+
+        if (btnMatricula) {
+            btnMatricula.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'matricula.html';
+            });
+        }
+
+        if (btnDocumentos) {
+            btnDocumentos.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'documentos.html';
+            });
+        }
+    });
+</script>
+
+<script src="main.js"></script>
+
+<script type="module">
+    
+    export function generateConfetti(confettiConfigObj, canvasId = "vanillaConfettiCanvas") {
+    const canvasEl = document.querySelector(`#${canvasId}`);
+
+    if (canvasEl === null) {
+        console.error(`Canvas with id "${canvasId}" not found.`);
+        return;
+    };
+
+    const ctx = canvasEl.getContext("2d");
+    const confettiArray = [];
+
+    function resizeCanvas() {
+        canvasEl.width = window.innerWidth;
+        canvasEl.height = window.innerHeight;
+    };
+    resizeCanvas();
+
+    window.addEventListener("resize", resizeCanvas);
+
+    function createConfetti() {
+        for (let i = 0; i < confettiConfigObj.quantity; i += 1) {
+            confettiArray.push({
+                x: Math.random() * canvasEl.width,
+                y: Math.random() * canvasEl.height - canvasEl.height,
+                size: Math.random() * (confettiConfigObj.maxSize - confettiConfigObj.minSize) + confettiConfigObj.minSize,
+                color: confettiConfigObj.colorsArray[Math.floor(Math.random() * confettiConfigObj.colorsArray.length)],
+                velocityX: Math.random() * 2 - 1,
+                velocityY: Math.random() * 3 + 2,
+                rotation: Math.random() * 360,
+                rotationSpeed: Math.random() * 10 - 5,
+                shape: Math.floor(Math.random() * 3),
+                depth: Math.random() * 3
+            });
+        };
+    };
+
+    function drawConfetti(confettiObj) {
+        ctx.save();
+        ctx.translate(confettiObj.x, confettiObj.y);
+        ctx.rotate((confettiObj.rotation * Math.PI) / 180);
+        ctx.scale(1, Math.cos(confettiObj.rotation * Math.PI / 180));
+        ctx.fillStyle = confettiObj.color;
+
+        if (confettiObj.shape === 0) {
+            ctx.fillRect(-confettiObj.size / 2, -confettiObj.size / 2, confettiObj.size, confettiObj.size);
+        } else if (confettiObj.shape === 1) {
+            ctx.beginPath();
+            ctx.arc(0, 0, confettiObj.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+        } else {
+            ctx.beginPath();
+            ctx.moveTo(-confettiObj.size / 2, confettiObj.size / 2);
+            ctx.lineTo(confettiObj.size / 2, confettiObj.size / 2);
+            ctx.lineTo(confettiObj.size / 4, -confettiObj.size / 2);
+            ctx.lineTo(-confettiObj.size / 4, -confettiObj.size / 2);
+            ctx.closePath();
+            ctx.fill();
+        };
+        ctx.restore();
+    };
+
+    function animateConfetti() {
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+
+        for (let confettiObj of confettiArray) {
+            confettiObj.velocityY += confettiConfigObj.velocity;
+            confettiObj.x += Math.sin(confettiObj.y / 30) * 0.5;
+            confettiObj.rotation += confettiObj.rotationSpeed;
+            confettiObj.x += confettiObj.velocityX;
+            confettiObj.y += confettiObj.velocityY;
+
+            if (confettiObj.y > canvasEl.height) {
+                if (confettiConfigObj.infiniteLoop === true) {
+                    confettiObj.y = -10;
+                    confettiObj.x = Math.random() * canvasEl.width;
+                    confettiObj.velocityY = Math.random() * 3 + 2;
+                    confettiObj.size = Math.random() * (confettiConfigObj.maxSize - confettiConfigObj.minSize) + confettiConfigObj.minSize;
+                    confettiObj.color = confettiConfigObj.colorsArray[Math.floor(Math.random() * confettiConfigObj.colorsArray.length)];
+                    confettiObj.depth = Math.random() * 3;
+                    confettiObj.rotation = Math.random() * 360;
+                } else {
+                    confettiArray.splice(confettiArray.indexOf(confettiObj), 1);
+                };
+            };
+
+            ctx.globalAlpha = (1 - confettiObj.depth / 3) * confettiConfigObj.minOpacity + Math.random() * (confettiConfigObj.maxOpacity - confettiConfigObj.minOpacity);
+
+            drawConfetti(confettiObj);
+        };
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(animateConfetti);
+    };
+
+    createConfetti();
+    animateConfetti();
+};
+    
+
+    
+    const config = {
+        quantity: 150,
+        maxSize: 10,
+        minSize: 5,
+        colorsArray: ["#00b894", "#00cec9", "#f1c40f", "#ffffff"],
+        velocity: 0.1,
+        infiniteLoop: false,
+        maxOpacity: 1,
+        minOpacity: 0.5
+    };
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        generateConfetti(config);
+    });
+</script>
+
+<script type="module" src="main.js"></script>
+
+</body>
+</html>

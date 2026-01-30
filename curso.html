@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFES - Meu Progresso</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/tree.css">
+
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <h1>UFES</h1>
+            <p>Oi, Sofia!</p>
+        </div>
+
+        <nav class="accordion-menu">
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-aulas">
+                    <i class="fas fa-graduation-cap"></i> Minhas Aulas
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="academico.html" class="sub-item">Acompanhamento</a>
+                    <a href="curso.html" class="sub-item">Meu Curso</a>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-matricula">
+                    <i class="fas fa-calendar-check"></i> Matrícula
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="matricula.html" class="sub-item">Ofertas de Disciplinas</a>
+                    <a href="estagio.html" class="sub-item">Vagas de Estágio</a>
+                </div>
+            </div>
+
+            <a href="documentos.html" class="nav-item">
+                <i class="fas fa-file-alt"></i> Documentos
+            </a>
+
+            <a href="agenda.html" class="nav-item">
+                <i class="fas fa-university"></i> Secretaria
+            </a>
+
+            
+
+            <a href="mapa.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i> Mapa Interativo
+            </a>
+
+            <a href="cardapio.html" class="nav-item">
+                <i class="fas fa-utensils"></i> Restaurante Universitário
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content tree-content">
+        <header class="top-header">
+            <h2>Jornada do Curso: Ciência da Computação</h2>
+        </header>
+
+        <section class="progress-header">
+            <div class="xp-container">
+                <div class="xp-bar-bg"><div class="xp-bar-fill" style="width: 42%;"></div></div>
+                <div class="tree-legend">
+                    <div class="legend-item"><span class="legend-circle status-concluido"></span><span>Concluída</span></div>
+                    <div class="legend-item"><span class="legend-circle status-atual"></span><span>Em Curso</span></div>
+                    <div class="legend-item"><span class="legend-circle status-futuro"></span><span>Pendente</span></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="tree-container" id="scroll-area">
+            <div class="tree-grid" id="main-grid">
+                <svg id="tree-connections">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                          <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255, 255, 255, 0.3)" />
+                        </marker>
+                    </defs>
+                </svg>
+                
+                <div class="period-layer-label">1º Período</div>
+                <div class="course-node status-concluido" id="COM05784"><i class="node-icon fa-solid fa-desktop"></i><span class="node-label">Intro. CC</span></div>
+                <div class="course-node status-concluido" id="COM05785"><i class="node-icon fa-solid fa-code"></i><span class="node-label">Prog. I</span></div>
+                <div class="course-node status-concluido" id="MAT05787"><i class="node-icon fa-solid fa-microchip"></i><span class="node-label">Mat. Discreta</span></div>
+                <div class="course-node status-concluido" id="MAT05788"><i class="node-icon fa-solid fa-vector-square"></i><span class="node-label">V.G.A.</span></div>
+                <div class="course-node status-concluido" id="MAT05789"><i class="node-icon fa-solid fa-square-root-variable"></i><span class="node-label">Cálculo A</span></div>
+                <div class="course-node status-concluido" id="LET05786"><i class="node-icon fa-solid fa-language"></i><span class="node-label">Inglês I</span></div>
+
+                <div class="period-layer-label">2º Período</div>
+                <div class="course-node status-concluido" id="COM05791" data-deps="COM05784"><i class="node-icon fa-solid fa-bolt"></i><span class="node-label">Circ. Digitais</span></div>
+                <div class="course-node status-concluido" id="COM05790" data-deps="COM05785"><i class="node-icon fa-solid fa-terminal"></i><span class="node-label">Prog. II</span></div>
+                <div class="course-node status-concluido" id="COM05792" data-deps="MAT05787"><i class="node-icon fa-solid fa-brain"></i><span class="node-label">Lógica Comp I</span></div>
+                <div class="course-node status-concluido" id="MAT05794" data-deps="MAT05788"><i class="node-icon fa-solid fa-table-cells"></i><span class="node-label">Álg. Linear</span></div>
+                <div class="course-node status-concluido" id="MAT05795" data-deps="MAT05789"><i class="node-icon fa-solid fa-divide"></i><span class="node-label">Cálculo B</span></div>
+                <div></div>
+
+                <div class="period-layer-label">3º Período</div>
+                <div class="course-node status-concluido" id="COM05796" data-deps="COM05791"><i class="node-icon fa-solid fa-server"></i><span class="node-label">Arq. Comp.</span></div>
+                <div class="course-node status-concluido" id="COM05797" data-deps="COM05790"><i class="node-icon fa-solid fa-folder-tree"></i><span class="node-label">E.D. I</span></div>
+                <div class="course-node status-concluido" id="COM05798" data-deps="COM05792"><i class="node-icon fa-solid fa-lightbulb"></i><span class="node-label">Lógica II</span></div>
+                <div></div>
+                <div class="course-node status-concluido" id="MAT05801" data-deps="MAT05795"><i class="node-icon fa-solid fa-plus-minus"></i><span class="node-label">Cálculo C</span></div>
+                <div class="course-node status-concluido" id="MAT05802" data-deps="MAT05789"><i class="node-icon fa-solid fa-chart-line"></i><span class="node-label">Estatística</span></div>
+
+                <div class="period-layer-label">4º Período</div>
+                <div class="course-node status-atual" id="COM05803" data-deps="COM05796,COM05797"><i class="node-icon fa-solid fa-memory"></i><span class="node-label">Sist. Operac.</span></div>
+                <div class="course-node status-atual" id="COM05804" data-deps="COM05797"><i class="node-icon fa-solid fa-diagram-project"></i><span class="node-label">E.D. II</span></div>
+                <div class="course-node status-atual" id="COM05805" data-deps="COM05798"><i class="node-icon fa-solid fa-scroll"></i><span class="node-label">L.F.A.</span></div>
+                <div class="course-node status-atual" id="MAT05807" data-deps="MAT05794,MAT05795"><i class="node-icon fa-solid fa-calculator"></i><span class="node-label">Alg. Numéricos</span></div>
+                <div class="course-node status-atual" id="COM10080" data-deps="COM05790"><i class="node-icon fa-solid fa-gears"></i><span class="node-label">Eng. Software</span></div>
+                <div></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const scrollArea = document.getElementById('scroll-area');
+        const svg = document.getElementById('tree-connections');
+        const mainGrid = document.getElementById('main-grid');
+        
+        let isDown = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        scrollArea.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - scrollArea.offsetLeft;
+            startY = e.pageY - scrollArea.offsetTop;
+            scrollLeft = scrollArea.scrollLeft;
+            scrollTop = scrollArea.scrollTop;
+        });
+
+        scrollArea.addEventListener('mouseleave', () => isDown = false);
+        scrollArea.addEventListener('mouseup', () => isDown = false);
+
+        scrollArea.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - scrollArea.offsetLeft;
+            const y = e.pageY - scrollArea.offsetTop;
+            const walkX = (x - startX);
+            const walkY = (y - startY);
+            scrollArea.scrollLeft = scrollLeft - walkX;
+            scrollArea.scrollTop = scrollTop - walkY;
+        });
+
+        function drawConnections() {
+            const paths = svg.querySelectorAll('.conn-path');
+            paths.forEach(p => p.remove());
+
+            const nodes = document.querySelectorAll('.course-node');
+
+            nodes.forEach(child => {
+                const deps = child.getAttribute('data-deps');
+                if (!deps) return;
+
+                deps.split(',').forEach(parentId => {
+                    const parent = document.getElementById(parentId);
+                    if (!parent) return;
+
+                    const x1 = parent.offsetLeft + parent.offsetWidth / 2;
+                    const y1 = parent.offsetTop + parent.offsetHeight;
+                    
+                    const x2 = child.offsetLeft + child.offsetWidth / 2;
+                    const y2 = child.offsetTop;
+
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    const cpY = y1 + (y2 - y1) / 2;
+                    const d = `M ${x1} ${y1} C ${x1} ${cpY}, ${x2} ${cpY}, ${x2} ${y2}`;
+                    
+                    path.setAttribute('d', d);
+                    path.setAttribute('class', 'conn-path');
+                    path.setAttribute('marker-end', 'url(#arrow)');
+                    svg.appendChild(path);
+                });
+            });
+        }
+
+        const resizeObserver = new ResizeObserver(() => {
+            const rect = mainGrid.getBoundingClientRect();
+            svg.setAttribute('width', mainGrid.scrollWidth);
+            svg.setAttribute('height', mainGrid.scrollHeight);
+            drawConnections();
+        });
+
+        resizeObserver.observe(mainGrid);
+
+        window.addEventListener('load', drawConnections);
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>

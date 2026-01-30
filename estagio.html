@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub de Estágios</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h1>UFES</h1>
+            <p>Oi, Sofia!</p>
+        </div>
+
+        <nav class="accordion-menu">
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-aulas">
+                    <i class="fas fa-graduation-cap"></i> Minhas Aulas
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="academico.html" class="sub-item">Acompanhamento</a>
+                    <a href="curso.html" class="sub-item">Meu Curso</a>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-matricula">
+                    <i class="fas fa-calendar-check"></i> Matrícula
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="matricula.html" class="sub-item">Ofertas de Disciplinas</a>
+                    <a href="estagio.html" class="sub-item">Vagas de Estágio</a>
+                </div>
+            </div>
+
+            <a href="documentos.html" class="nav-item">
+                <i class="fas fa-file-alt"></i> Documentos
+            </a>
+
+            <a href="agenda.html" class="nav-item">
+                <i class="fas fa-university"></i> Secretaria
+            </a>
+
+            
+
+            <a href="mapa.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i> Mapa Interativo
+            </a>
+
+            <a href="cardapio.html" class="nav-item">
+                <i class="fas fa-utensils"></i> Restaurante Universitário
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-header">
+            <i class="fas fa-language icon-btn" title="Traduzir"></i>
+            <i class="fas fa-sign-out-alt icon-btn" title="Sair"></i>
+        </header>
+
+        <div class="documents-container">
+
+            <h3 class="subsection-title">Vagas de Estágio</h3>
+            
+            <div class="docs-grid">
+                
+                <div class="doc-card">
+                    <div class="doc-content-top">
+                        <i class="fa-solid fa-suitcase"></i>
+                        <span class="doc-name">Baile do Megatron</span>
+                    </div>
+                    <div class="doc-content-mid">
+                        <span class="doc-name">Texto Descritivo</span>
+                    </div>
+                    <div class="doc-content-bottom">
+                        <span class="doc-meta">01/01 - 01/02</span>
+                        <div>
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                            <i class="fa-solid fa-hand" title="Tenho Interesse"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+  
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const btnDashboard = document.getElementById('btn-dashboard');
+        const btnMatricula = document.getElementById('btn-matricula');
+        const btnDocumentos = document.getElementById('btn-documentos');
+
+        if (btnDashboard) {
+            btnDashboard.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'dashboard.html';
+            });
+        }
+
+        if (btnMatricula) {
+            btnMatricula.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'matricula.html';
+            });
+        }
+
+        if (btnDocumentos) {
+            btnDocumentos.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'documentos.html';
+            });
+        }
+    });
+  </script>
+  
+  <script src="main.js"></script>
+
+</body>
+</html>
+  

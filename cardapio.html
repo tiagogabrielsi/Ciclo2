@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Universitário</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/cardapio.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <h1>UFES</h1>
+            <p>Oi, Sofia!</p>
+        </div>
+
+        <nav class="accordion-menu">
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-aulas">
+                    <i class="fas fa-graduation-cap"></i> Minhas Aulas
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="academico.html" class="sub-item">Acompanhamento</a>
+                    <a href="curso.html" class="sub-item">Meu Curso</a>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" id="header-matricula">
+                    <i class="fas fa-calendar-check"></i> Matrícula
+                    <i class="fas fa-chevron-down arrow"></i>
+                </button>
+                <div class="accordion-content">
+                    <a href="matricula.html" class="sub-item">Ofertas de Disciplinas</a>
+                    <a href="estagio.html" class="sub-item">Vagas de Estágio</a>
+                </div>
+            </div>
+
+            <a href="documentos.html" class="nav-item">
+                <i class="fas fa-file-alt"></i> Documentos
+            </a>
+
+            <a href="agenda.html" class="nav-item">
+                <i class="fas fa-university"></i> Secretaria
+            </a>
+
+            <a href="mapa.html" class="nav-item">
+                <i class="fas fa-map-marked-alt"></i> Mapa Interativo
+            </a>
+
+            <a href="cardapio.html" class="nav-item active">
+                <i class="fas fa-utensils"></i> Restaurante Universitário
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        
+        <header class="top-header">
+            <i class="fas fa-language icon-btn" title="Traduzir / Translate"></i>
+            <i class="fas fa-sign-out-alt icon-btn" title="Sair"></i>
+        </header>
+
+        <section>
+            <h1 class="section-title">Restaurante Universitário</h1>
+            
+            <div class="status-panel">
+                <div class="status-info">
+                    <h2 id="ru-status-text">Carregando status...</h2>
+                    <p id="ru-message">Verificando horários de funcionamento.</p>
+                </div>
+                <div class="timer-display" id="timer-container" style="display: none;">
+                    <span class="timer-label">Fecha em</span>
+                    <div class="timer-numbers" id="countdown">00:00:00</div>
+                </div>
+            </div>
+
+            <div class="status-panel" style="margin-top: 20px; background-color: #2d3436; border: 1px solid #444; display: flex; align-items: center; gap: 30px;">
+            
+            <div style="flex: 1;">
+                <h2 style="font-size: 20px; color: #fff; margin-bottom: 10px;">Saldo do RU</h2>
+                <p style="color: #b2bec3; font-size: 16px;">
+                    Você tem <strong style="color: #00cec9; font-size: 22px;">5</strong> almoços restantes.
+                </p>
+                <p style="color: #aaa; font-size: 14px; margin-top: 5px;">
+                    Recarregue instantaneamente escaneando ao lado.
+                </p>
+            </div>
+
+            <div style="background: #fff; padding: 10px; border-radius: 8px; text-align: center;">
+                <i class="fas fa-qrcode" style="font-size: 80px; color: #2d3436;"></i>
+                <p style="color: #2d3436; font-size: 10px; font-weight: bold; margin-top: 5px;">PIX</p>
+            </div>
+
+            </div>
+
+            <div class="menu-row">
+                
+                <div class="menu-column">
+                    <h3><i class="fas fa-calendar-day"></i> Hoje</h3>
+                    
+                    <div class="menu-section-title">
+                        <i class="fas fa-utensils"></i> Prato Principal
+                    </div>
+                    
+                    <div class="food-card">
+                        <div style="--bg-color: #e74c3c" class="food-card__image">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <div class="food-card__content">
+                            <p class="food-card__title">Strogonoff de Frango</p>
+                            <div class="food-card__footer">Contém: Lactose</div>
+                        </div>
+                    </div>
+
+                    <div class="food-card">
+                        <div style="--bg-color: #27ae60" class="food-card__image">
+                             <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="food-card__content">
+                            <p class="food-card__title">Opção Veg: Grão de Bico</p>
+                            <div class="food-card__footer">Vegano</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section-title">
+                        <i class="fas fa-bowl-food"></i> Guarnição
+                    </div>
+                    
+                    <div class="food-card">
+                        <div style="--bg-color: #f1c40f" class="food-card__image">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <div class="food-card__content">
+                            <p class="food-card__title">Batata Palha</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-section-title">
+                        <i class="fas fa-ice-cream"></i> Sobremesa
+                    </div>
+                    
+                    <div class="food-card">
+                        <div style="--bg-color: #9b59b6" class="food-card__image">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="food-card__content">
+                            <p class="food-card__title">Gelatina de Morango</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="menu-column">
+                    <h3><i class="fas fa-calendar-plus"></i> Amanhã</h3>
+                    
+                    <div class="menu-section-title">
+                        <i class="fas fa-utensils"></i> Prato Principal
+                    </div>
+                    
+                    <div class="food-card">
+                        <div style="--bg-color: #d35400" class="food-card__image">
+                             <i class="fas fa-bacon"></i>
+                        </div>
+                        <div class="food-card__content">
+                            <p class="food-card__title">
+                                Feijoada Completa
+                                <span class="spicy-tag"><i class="fas fa-pepper-hot"></i> Apimentado</span>
+                            </p>
+                            <div class="food-card__footer">Pesado</div>
+                        </div>
+                    </div>
+
+                    <div class="food-card">
+                        <div style="--bg-color: #2ecc71" class="food-card__image">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="food-card__content">
+                            <p class="food-card__title">Veg: Feijoada de Legumes</p>
+                            <div class="food-card__footer">Vegano</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section-title">
+                        <i class="fas fa-bowl-food"></i> Guarnição
+                    </div>
+                    
+                    <div class="food-card">
+                        <div style="--bg-color: #f39c12" class="food-card__image">
+                            <i class="fas fa-carrot"></i>
+                        </div>
+                        <div class="food-card__content">
+                            <p class="food-card__title">Couve Refogada & Farofa</p>
+                        </div>
+                    </div>
+
+                    <div class="menu-section-title">
+                        <i class="fas fa-ice-cream"></i> Sobremesa
+                    </div>
+                    
+                    <div class="food-card">
+                        <div style="--bg-color: #3498db" class="food-card__image">
+                            <i class="fas fa-lemon"></i>
+                        </div>
+                        <div class="food-card__content">
+                            <p class="food-card__title">Laranja</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="main.js"></script>
+
+    <script>
+        const schedules = {
+            breakfast: { start: 7.0, end: 9.0, name: "Café da Manhã" },
+            lunch:     { start: 11.0, end: 14.0, name: "Almoço" },
+            dinner:    { start: 17.5, end: 19.5, name: "Jantar" }
+        };
+
+        function updateStatus() {
+            const now = new Date();
+            
+            const currentHour = now.getHours() + (now.getMinutes() / 60) + (now.getSeconds() / 3600);
+            
+            const statusText = document.getElementById('ru-status-text');
+            const messageText = document.getElementById('ru-message');
+            const timerContainer = document.getElementById('timer-container');
+            const countdownEl = document.getElementById('countdown');
+
+            let currentMeal = null;
+            let nextMeal = null;
+
+            for (const [key, meal] of Object.entries(schedules)) {
+                if (currentHour >= meal.start && currentHour < meal.end) {
+                    currentMeal = meal;
+                    break;
+                }
+                if (currentHour < meal.start && !nextMeal) {
+                    nextMeal = meal;
+                }
+            }
+
+            if (!currentMeal && !nextMeal) {
+                nextMeal = schedules.breakfast;
+            }
+
+            if (currentMeal) {
+                statusText.innerHTML = `RU Aberto <span class="status-badge badge-open">${currentMeal.name}</span>`;
+                messageText.innerText = "Aproveite sua refeição!";
+                timerContainer.style.display = 'block';
+
+                const endTime = new Date(now.getTime());
+                const endHour = Math.floor(currentMeal.end);
+                const endMinute = (currentMeal.end - endHour) * 60;
+                
+                endTime.setHours(endHour, endMinute, 0, 0);
+                
+                if (endTime < now) { endTime.setDate(endTime.getDate() + 1); }
+
+                const diff = endTime - now;
+                
+                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const m = Math.floor((diff / (1000 * 60)) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+
+                countdownEl.innerText = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+                if (diff > 0 && diff < 15 * 60 * 1000) {
+                    countdownEl.classList.add('critical');
+                    messageText.innerText = "Corre que vai fechar!";
+                } else {
+                    countdownEl.classList.remove('critical');
+                }
+
+            } else {
+                timerContainer.style.display = 'none';
+                statusText.innerHTML = `RU Fechado <span class="status-badge badge-closed">Aguarde</span>`;
+                
+                if (nextMeal) {
+                    const startHour = Math.floor(nextMeal.start);
+                    const startMin = Math.round((nextMeal.start - startHour) * 60);
+                    const timeString = `${startHour.toString().padStart(2, '0')}:${startMin.toString().padStart(2, '0')}`;
+                    
+                    const isTomorrow = nextMeal.start < currentHour;
+                    messageText.innerText = `Reabre ${isTomorrow ? 'amanhã' : ''} para ${nextMeal.name} às ${timeString}.`;
+                }
+            }
+        }
+
+        setInterval(updateStatus, 1000);
+        updateStatus();
+    </script>
+</body>
+</html>

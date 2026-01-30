@@ -1,0 +1,21 @@
+.appointment-card {
+    background-color: #2d3436;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid transparent;
+}
+.appointment-card.today { border-left-color: #00b894; background-color: #353b3d; }
+
+.map-container {
+    position: relative;
+    width: 800px; height: 600px;
+    border-radius: 20px; border: 1px solid #333;
+    background-color: #181818;
+}
+
+.map-node { position: absolute; cursor: pointer; text-align: center; }
+.building-box { width: 100px; height: 100px; background: #1e1e1e; border: 2px solid #fff; border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 40px; }
